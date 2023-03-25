@@ -33,11 +33,23 @@ public class Circles {
         this.radius = rnd.nextInt(1, 50);
     }
 
+    /**
+     * Метод для определения общих точек у двух {@link #Circles окружностей}
+     * @param circles1 объект первой окружности
+     * @param circles2 объект второй окружности
+     * @return true/false - если окружности имеют одну и больше общих точек или не имеют
+     */
     public static boolean haveShareDots(Circles circles1, Circles circles2) {
         double distance = distanceBeetwenDots(circles1, circles2);
         return (circles1.radius + circles2.radius) >= distance;
     }
 
+    /**
+     * Метод для подсчета расстояния между двумя координатами {@link #Circles окружностей}
+     * @param circles1 объект первой окружности
+     * @param circles2 объект второй окружности
+     * @return расстояние, число типа {@code double}
+     */
     private static double distanceBeetwenDots(@NotNull Circles circles1, @NotNull Circles circles2) {
         return Math.sqrt(Math.pow((circles1.coordX - circles2.coordX), 2) + Math.pow((circles1.coordY - circles2.coordY), 2));
     }
