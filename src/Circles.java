@@ -7,6 +7,12 @@ public class Circles {
     private final int coordY;
     private final int radius;
 
+    /**
+     * Конструктор окружности по параметрам
+     * @param coordX координата центра по оси Х
+     * @param coordY координата центра по оси Y
+     * @param radius радиус создаваемой окружности, принимает только значения больше 1, иначе вызывает исключение {@link IllegalArgumentException}
+     */
     Circles(int coordX, int coordY, int radius) {
         this.coordX = coordX;
         this.coordY = coordY;
@@ -17,6 +23,9 @@ public class Circles {
         }
     }
 
+    /**
+     * Конструктор для случайной окружности, не принимает параметров
+     */
     Circles() {
         Random rnd = new Random();
         this.coordX = rnd.nextInt(-255, 256);
