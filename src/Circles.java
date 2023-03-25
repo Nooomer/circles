@@ -2,6 +2,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
+/**
+ * Класс для окружности
+ * <p>Методы: {@link #haveShareDots(Circles, Circles)}
+ */
 public class Circles {
     private final int coordX;
     private final int coordY;
