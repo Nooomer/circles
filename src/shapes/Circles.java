@@ -1,3 +1,5 @@
+package shapes;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
@@ -7,9 +9,8 @@ import java.util.Random;
  * <p>Методы: {@link #haveShareDots(Circles, Circles)}
  */
 public class Circles {
-    private final int coordX;
-    private final int coordY;
     private final int radius;
+    Dots dots;
 
     /**
      * Конструктор окружности по параметрам
@@ -18,9 +19,8 @@ public class Circles {
      * @param coordY координата центра по оси Y
      * @param radius радиус создаваемой окружности, принимает только значения больше 1, иначе вызывает исключение {@link IllegalArgumentException}
      */
-    Circles(int coordX, int coordY, int radius) {
-        this.coordX = coordX;
-        this.coordY = coordY;
+    public Circles(int coordX, int coordY, int radius) {
+        dots = new Dots(coordX, coordY);
         if (radius >= 1) {
             this.radius = radius;
         } else {
@@ -31,10 +31,9 @@ public class Circles {
     /**
      * Конструктор для случайной окружности, не принимает параметров
      */
-    Circles() {
+    public Circles() {
         Random rnd = new Random();
-        this.coordX = rnd.nextInt(-255, 256);
-        this.coordY = rnd.nextInt(-255, 256);
+        dots = new Dots(rnd.nextInt(-255, 256), rnd.nextInt(-255, 256));
         this.radius = rnd.nextInt(1, 50);
     }
 
@@ -45,29 +44,13 @@ public class Circles {
      * @param circles2 объект второй окружности
      * @return true/false - если окружности имеют одну и больше общих точек или не имеют
      */
-    public static boolean haveShareDots(Circles circles1, Circles circles2) {
-        double distance = distanceBeetwenDots(circles1, circles2);
+    public static boolean haveShareDots(@NotNull Circles circles1, @NotNull Circles circles2) {
+        double distance = Dots.distanceBeetwenDots(circles1.dots, circles2.dots);
         return (circles1.radius + circles2.radius) >= distance;
     }
 
-    /**
-     * Метод для подсчета расстояния между двумя координатами {@link #Circles окружностей}
-     *
-     * @param circles1 объект первой окружности
-     * @param circles2 объект второй окружности
-     * @return расстояние, число типа {@code double}
-     */
-    private static double distanceBeetwenDots(@NotNull Circles circles1, @NotNull Circles circles2) {
-        return Math.sqrt(Math.pow((circles1.coordX - circles2.coordX), 2) + Math.pow((circles1.coordY - circles2.coordY), 2));
-    }
-
-    //Нужны ли вообще геттеры?
-    public int getCoordX() {
-        return coordX;
-    }
-
-    public int getCoordY() {
-        return coordY;
+    public Dots getDots() {
+        return dots;
     }
 
     public int getRadius() {
