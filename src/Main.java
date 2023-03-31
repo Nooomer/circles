@@ -1,10 +1,12 @@
-import shapes.Circles;
+import shapes.Circle;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            Circles circles1 = new Circles(0, 0, 2);
-            Circles circles2 = new Circles(1, 1, 2);
+            Circle circle1 = new Circle(1, 1, 4);
+            Circle circle2 = new Circle(0, 1, 3);
+            //Circles circlesNull = null;
+            //Circles.haveShareDots(circlesNull, circles2);
             //Circles circles3 = new Circles(1, 1, -1);
             //Circles randomCircles = new Circles();
             int x = circle1.getCenter().getCoordX();
