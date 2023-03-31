@@ -8,9 +8,9 @@ import java.util.Random;
  * Класс для окружности
  * <p>Методы: {@link #haveShareDots(Circles, Circles)}
  */
-public class Circles {
+public class Circle {
     private final int radius;
-    Dots dots;
+    Dot center;
 
     /**
      * Конструктор окружности по параметрам
@@ -19,29 +19,29 @@ public class Circles {
      * @param coordY координата центра по оси Y
      * @param radius радиус создаваемой окружности, принимает только значения больше 1, иначе вызывает исключение {@link IllegalArgumentException}
      */
-    public Circles(int coordX, int coordY, int radius) {
-        dots = new Dots(coordX, coordY);
+    public Circle(int coordX, int coordY, int radius) {
+        center = new Dot(coordX, coordY);
         if (radius >= 1) {
             this.radius = radius;
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Radius can't be less 1");
         }
     }
 
     /**
      * Конструктор для случайной окружности, не принимает параметров
      */
-    public Circles() {
+    public Circle() {
         Random rnd = new Random();
-        dots = new Dots(rnd.nextInt(-255, 256), rnd.nextInt(-255, 256));
+        center = new Dot(rnd.nextInt(-255, 256), rnd.nextInt(-255, 256));
         this.radius = rnd.nextInt(1, 50);
     }
 
     /**
-     * Метод для определения общих точек у двух {@link #Circles окружностей}
+     * Метод для определения общих точек у двух {@link #Circle окружностей}
      *
-     * @param circles1 объект первой окружности
-     * @param circles2 объект второй окружности
+     * @param circle1 объект первой окружности
+     * @param circle2 объект второй окружности
      * @return true/false - если окружности имеют одну и больше общих точек или не имеют
      */
     public static boolean haveShareDots(@NotNull Circles circles1, @NotNull Circles circles2) {
@@ -49,8 +49,8 @@ public class Circles {
         return (circles1.radius + circles2.radius) >= distance;
     }
 
-    public Dots getDots() {
-        return dots;
+    public Dot getCenter() {
+        return center;
     }
 
     public int getRadius() {

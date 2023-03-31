@@ -6,15 +6,15 @@ public class Main {
             Circles circles1 = new Circles(0, 0, 2);
             Circles circles2 = new Circles(1, 1, 2);
             //Circles circles3 = new Circles(1, 1, -1);
-            Circles randomCircles = new Circles();
-            int x = circles1.getDots().getCoordX();
-            if (Circles.haveShareDots(circles1, circles2)) {
+            //Circles randomCircles = new Circles();
+            int x = circle1.getCenter().getCoordX();
+            if (Circle.haveShareDots(circle1, circle2)) {
                 System.out.print("Circles have share dots");
             } else {
                 System.out.print("Circles haven't share dots");
             }
         } catch (Exception e) {
-            System.out.println("shapes.Circles radius less 1!!");
+            System.out.println(e.getMessage());
         }
     }
 }
