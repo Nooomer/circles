@@ -6,7 +6,7 @@ import java.util.Random;
 
 /**
  * Класс для окружности
- * <p>Методы: {@link #haveShareDots(Circles, Circles)}
+ * <p>Методы: {@link #haveShareDots(Circle, Circle)}
  */
 public class Circle {
     private final int radius;
@@ -44,9 +44,12 @@ public class Circle {
      * @param circle2 объект второй окружности
      * @return true/false - если окружности имеют одну и больше общих точек или не имеют
      */
-    public static boolean haveShareDots(@NotNull Circles circles1, @NotNull Circles circles2) {
-        double distance = Dots.distanceBeetwenDots(circles1.dots, circles2.dots);
-        return (circles1.radius + circles2.radius) >= distance;
+    public static boolean haveShareDots(@NotNull Circle circle1, @NotNull Circle circle2) {
+        double distance = Dot.distanceBeetwenDots(circle1.getCenter(), circle2.getCenter());
+        return (
+                (((circle1.getRadius() + circle2.getRadius()) >= distance)&&(Math.abs(circle2.getRadius() - circle1.getRadius()) < distance))
+                || (
+                (Math.abs(circle2.getRadius() - circle1.getRadius())) == distance));
     }
 
     public Dot getCenter() {
